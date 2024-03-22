@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
+import { ModeToggle } from "./ModeToggle";
 
 const NavBar = () => {
   return (
@@ -10,7 +11,8 @@ const NavBar = () => {
         <Menu />
       </Button>
 
-      <div className="flex w-full justify-end">
+      <div className="flex w-full justify-end items-center gap-4">
+        <ModeToggle />
         <UserButton afterSignOutUrl="/" />
       </div>
     </nav>
