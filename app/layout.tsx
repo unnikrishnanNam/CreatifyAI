@@ -3,6 +3,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/custom/ThemeProvider";
+import { dark, shadesOfPurple } from "@clerk/themes";
+import { useTheme } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    // appearance={{
+    //   baseTheme: shadesOfPurple,
+    // }}
+    >
       <html lang="en">
         <body className={inter.className}>
           <ThemeProvider

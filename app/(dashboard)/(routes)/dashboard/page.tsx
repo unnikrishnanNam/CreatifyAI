@@ -1,13 +1,81 @@
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { UserButton } from "@clerk/nextjs";
+import {
+  ArrowRight,
+  Code,
+  ImageIcon,
+  MessageSquare,
+  Music,
+  VideoIcon,
+} from "lucide-react";
 import React from "react";
+
+const tools = [
+  {
+    label: "Conversation",
+    icon: MessageSquare,
+    href: "/conversation",
+    color: "text-violet-500",
+    bgColor: "bg-violet-500/10",
+  },
+  {
+    label: "Music Generation",
+    icon: Music,
+    href: "/music",
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+  },
+  {
+    label: "Image Generation",
+    icon: ImageIcon,
+    color: "text-pink-700",
+    bgColor: "bg-pink-700/10",
+    href: "/image",
+  },
+  {
+    label: "Video Generation",
+    icon: VideoIcon,
+    color: "text-orange-700",
+    bgColor: "bg-orange-700/10",
+    href: "/video",
+  },
+  {
+    label: "Code Generation",
+    icon: Code,
+    color: "text-green-700",
+    bgColor: "bg-green-700/10",
+    href: "/code",
+  },
+];
 
 const DashboardPage = () => {
   return (
-    <div className="text-center p-10">
-      <h1 className="text-4xl font-semibold text-muted-foreground">
-        Dashboard (Protected)
-      </h1>
-      <p>Welcome to the dashboard</p>
+    <div>
+      <div className="mb-8 space-y-4">
+        <h2 className="text-center text-2xl md:text-4xl font-bold">
+          Creatify Ai
+        </h2>
+        <p className="text-center text-muted-foreground font-light text-sm md:text-lg">
+          A collection of AI models to generate creative content
+        </p>
+      </div>
+      <div className="px-4 md:px-20 lg:px-32 space-y-4">
+        {tools.map((tool) => (
+          <Card
+            key={tool.href}
+            className="p-4 border-muted dark:border-muted flex items-center justify-between hover:shadow-md transition cursor-pointer"
+          >
+            <div className="flex items-center gap-x-4">
+              <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
+                <tool.icon className={cn("w-8 h-8", tool.color)} />
+              </div>
+              <div className="font-semibold">{tool.label}</div>
+            </div>
+            <ArrowRight className="w-5 h-5" />
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
